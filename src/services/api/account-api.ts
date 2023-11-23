@@ -4,7 +4,7 @@ import { TLoginForm, TRegisterForm } from "../../models/account";
 
 export const AccountAPI = createApi({
   reducerPath: "accountAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_APP_API_URL }),
   tagTypes: ["Account"],
   endpoints: (build) => ({
     login: build.mutation<TLoginForm, Partial<TLoginForm>>({

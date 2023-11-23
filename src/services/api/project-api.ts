@@ -4,7 +4,7 @@ import { TProject } from "../../models/project";
 
 export const ProjectAPI = createApi({
   reducerPath: "projectAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_APP_API_URL }),
   tagTypes: ["Project"],
   endpoints: (build) => ({
     getProjects: build.query<TProject[], void>({

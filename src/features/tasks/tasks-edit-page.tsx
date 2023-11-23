@@ -52,18 +52,26 @@ export const TasksEditPage = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<TTaskForm> = (data) => {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-
-    updateTask({ ...data, id: id });
-
-    navigate("/tasks");
+    updateTask({ ...data, id: id })
+      .then((x) => {
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(data, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+        navigate("/tasks");
+      })
+      .catch((x) => {
+        toast({
+          title: "Error",
+          description: "Error saving the record",
+        });
+      });
   };
 
   if (isLoadingTask) return <h1>Loading</h1>;

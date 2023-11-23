@@ -3,7 +3,7 @@ import { TTask } from "../../models/task";
 
 export const TaskAPI = createApi({
   reducerPath: "taskAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_APP_API_URL }),
   tagTypes: ["Task"],
   endpoints: (build) => ({
     getTasks: build.query<TTask[], void>({
